@@ -8,13 +8,15 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  archive: ^3.4.10
   flutter:
     sdk: flutter
+
+  archive: ^3.4.10
   uuid: ^4.4.0
   http:
-  web_socket_channel:
-    path: ./web_socket_channel
+  async: ^2.5.0
+  crypto: ^3.0.0
+  stream_channel: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -2,7 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_socket_channel/web_socket_channel.dart';
+
+import '../websocket_channel/channel.dart';
 import 'message_compression_service.dart';
 import 'messages.dart';
 import 'result_messages.dart';

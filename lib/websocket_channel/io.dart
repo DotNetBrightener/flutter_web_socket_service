@@ -8,9 +8,9 @@ import 'dart:io';
 import 'package:async/async.dart';
 import 'package:stream_channel/stream_channel.dart';
 
-import 'src/channel.dart';
-import 'src/exception.dart';
-import 'src/sink_completer.dart';
+import 'channel.dart';
+import 'exception.dart';
+import 'sink_completer.dart';
 
 /// A [WebSocketChannel] that communicates using a `dart:io` [WebSocket].
 class IOWebSocketChannel extends StreamChannelMixin
