@@ -41,7 +41,7 @@ class WebSocketService {
       _eventListeners[s] = [];
     }
 
-    if (_eventListeners[s]!.contains(callback)) {
+    if (!_eventListeners[s]!.contains(callback)) {
       _eventListeners[s]!.add(callback);
     }
   }
@@ -65,6 +65,8 @@ class WebSocketService {
 
     if (requireAuth) {
       if (initialAuthToken == null) {
+        _waitingConnection = false;
+        _connectionId = null;
         throw Exception('initialAuthToken is required');
       }
       final authExchangeEndpoint =
@@ -84,6 +86,8 @@ class WebSocketService {
         final response = Map.from(jsonDecode(value.body));
         _connectionId = response['cnnToken'];
       } catch (ex) {
+        _waitingConnection = false;
+        _connectionId = null;
         throw Exception(
             'Unable to authenticate prior to connecting to websocket');
       }
@@ -137,6 +141,8 @@ class WebSocketService {
         return _onDoneCompleter!.future;
       }
     }
+    _connectionId = null;
+    _waitingConnection = false;
     return Future.value();
   }
 
