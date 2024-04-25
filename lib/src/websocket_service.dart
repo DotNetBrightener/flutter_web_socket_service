@@ -41,7 +41,17 @@ class WebSocketService {
       _eventListeners[s] = [];
     }
 
-    _eventListeners[s]!.add(callback);
+    if (_eventListeners[s]!.contains(callback)) {
+      _eventListeners[s]!.add(callback);
+    }
+  }
+
+  void removeEventListener(String s, Future Function(dynamic response) callback) {
+    if (_eventListeners[s] == null) {
+      _eventListeners[s] = [];
+    }
+
+    _eventListeners[s]!.remove(callback);
   }
 
   Future<ConnectResult> connect() async {
