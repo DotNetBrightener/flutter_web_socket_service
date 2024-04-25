@@ -206,6 +206,11 @@ class WebSocketService {
     }
 
     await close();
+
+    // restart the connection
+    Timer(const Duration(seconds: 3), () async {
+      await connect();
+    });
   }
 
   void _onDone() {
